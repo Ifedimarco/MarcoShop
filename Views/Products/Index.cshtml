@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MarcoShorp.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="btn btn-outline-danger">Welcome To MarcoShop, kindly Search For Product Choice</h1>
+
+<p>
+    <a asp-action="Create"  class="btn btn-primary">Register New Product</a>
+</p>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsModel)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductsImage)
+                    </th>
+                    <th>CRUDE ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductsName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductsModel)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductsPrice)
+                        </td>
+                        <td>
+                            <a href="~/images/@item.ProductsImage" target="_blank"><img src="~/images/@item.ProductsImage" width="100" class="img-thumbnail"></a>
+
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-danger">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
